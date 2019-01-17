@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+header .title {
+    font-size: 20px;
+}
+
+header .add {
+    font-size: 25px;
+    margin-left: auto;
+}
+
+header .close {
+    font-size: 15px;
+    margin-left: auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    border: 1px solid black;
+    display: block;
+    padding: 8px;
+    margin: 20px 0;
+}
+
+ul li input {
+    float: right;
+    border-style: solid;
+}
+
+ul li input:checked {
+    text-decoration-style: dashed;
+    text-decoration: line-through;
+}
+
+.details p {
+    margin: 20px 0;
+}
+
+form {
+    width: 100%;
+    margin: 20px 0;
+}
+
+form p {
+    margin: 20px 0;
+}
+
+form button {
+    width: 100%;
+    border: 1px solid black;
+}
+
+form input, form textarea {
+    width: 100%;
+    font-family: inherit;
+}
