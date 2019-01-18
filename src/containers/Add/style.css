@@ -1,0 +1,18 @@
+.addTask form {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.addTask form p {
+    margin: 20px 0;
+}
+
+.addTask form button {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.addTask form input, form textarea {
+    width: 100%;
+    font-family: inherit;
+}

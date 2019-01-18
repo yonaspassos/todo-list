@@ -1,0 +1,16 @@
+.tasks ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.tasks ul li {
+    border: 1px solid black;
+    display: block;
+    padding: 8px;
+    margin: 20px 0;
+}
+
+.tasks ul li input {
+    float: right;
+    border-style: solid;
+}

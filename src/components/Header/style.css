@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    align-items: center;
+}
+
+header .title {
+    font-size: 20px;
+}
+
+header .add {
+    font-size: 25px;
+    margin-left: auto;
+}
+
+header .close {
+    font-size: 15px;
+    margin-left: auto;
+}
