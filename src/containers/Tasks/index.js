@@ -6,10 +6,10 @@ import './style.css';
 class Tasks extends Component {
     state = {
         tasks: [
-            'Estudar',
-            'Ler',
-            'Assistir filme',
-            'lavar louça'
+            {id: 1, title: 'Estudar'},
+            {id: 2, title: 'Ler'},
+            {id: 3, title: 'Assistir filme'},
+            {id: 4, title: 'lavar louça'}
         ]
     }
 
@@ -20,7 +20,7 @@ class Tasks extends Component {
                 <div className="tasks">
                     <ul>
                         {this.state.tasks.map(task => {
-                            return <Task title={task} />;
+                            return <Task data={task} />;
                         })}
                     </ul>
                 </div>
