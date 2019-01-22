@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header';
 import Task from '../../components/Task';
+import api from '../../services/api';
 import './style.css';
 
 class Tasks extends Component {
     state = {
-        tasks: [
-            {id: 1, title: 'Estudar'},
-            {id: 2, title: 'Ler'},
-            {id: 3, title: 'Assistir filme'},
-            {id: 4, title: 'lavar louça'}
-        ]
+        tasks: {}
+    }
+
+    componentDidMount() {
+        api.get('tasks.json').then(response => {
+            const tasks = response.data;
+            this.setState({tasks: tasks});
+        })
     }
 
     render () {
+        let tasks = [];
+        for (let [key, value] of Object.entries(this.state.tasks)) {
+            tasks.push({
+                id: key,
+                name: value.taskname,
+                description: value.description
+            });
+        }
         return (
             <div>
                 <Header title='Minhas Tarefas' action='add' />
                 <div className="tasks">
                     <ul>
-                        {this.state.tasks.map(task => {
+                        {tasks.map(task => {
                             return <Task data={task} />;
                         })}
                     </ul>

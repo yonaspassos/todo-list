@@ -5,9 +5,9 @@ class Task extends Component {
     render () {
         const task = this.props.data;
         return (
-            <li>
+            <li key={task.id}>
                 <span>
-                    <Link to={`/details/${task.id}`}>{task.title}</Link>
+                    <Link to={`/details/${task.id}`} >{task.name}</Link>
                 </span>
                 <input type="checkbox" />
             </li>
