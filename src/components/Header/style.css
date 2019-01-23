@@ -12,7 +12,15 @@ header .add {
     margin-left: auto;
 }
 
+header .add a {
+    text-decoration: none;
+}
+
 header .close {
     font-size: 15px;
     margin-left: auto;
+}
+
+header .close a {
+    text-decoration: none;
 }

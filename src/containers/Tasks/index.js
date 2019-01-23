@@ -6,32 +6,44 @@ import './style.css';
 
 class Tasks extends Component {
     state = {
-        tasks: {}
+        tasks: []
     }
 
     componentDidMount() {
         api.get('tasks.json').then(response => {
-            const tasks = response.data;
+            let tasks = [];
+            for (let [key, value] of Object.entries(response.data)) {
+                tasks.push({
+                    id: key,
+                    name: value.taskname,
+                    description: value.description
+                });
+            }
             this.setState({tasks: tasks});
-        })
+        });
+       
+    }
+
+    removeTaskHandler = taskId => {
+        api.delete(`/tasks/${taskId}.json`);
+        const tasks = this.state.tasks.filter(task => {
+            if (task.id === taskId) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+        this.setState({tasks: tasks});
     }
 
     render () {
-        let tasks = [];
-        for (let [key, value] of Object.entries(this.state.tasks)) {
-            tasks.push({
-                id: key,
-                name: value.taskname,
-                description: value.description
-            });
-        }
         return (
             <div>
                 <Header title='Minhas Tarefas' action='add' />
                 <div className="tasks">
                     <ul>
-                        {tasks.map(task => {
-                            return <Task data={task} />;
+                        {this.state.tasks.map(task => {
+                            return <Task data={task} delete={this.removeTaskHandler} />;
                         })}
                     </ul>
                 </div>

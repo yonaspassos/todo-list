@@ -17,7 +17,7 @@ class Details extends Component {
                 taskname: task.taskname,
                 description: task.description
             });
-        })
+        });
     }
 
     render () {

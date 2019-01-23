@@ -9,7 +9,7 @@ class Task extends Component {
                 <span>
                     <Link to={`/details/${task.id}`} >{task.name}</Link>
                 </span>
-                <input type="checkbox" />
+                <input type="checkbox" onClick={(event) => this.props.delete(task.id)} />
             </li>
         )
     }
