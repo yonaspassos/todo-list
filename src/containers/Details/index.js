@@ -5,13 +5,13 @@ import './style.css';
 
 class Details extends Component {
     state = {
-        taskname: null,
-        description: null
+        taskname: '',
+        description: ''
     }
 
     componentDidMount() {
-        const { id } = this.props.match.params;
-        api.get(`/tasks/${id}.json`).then(response => {
+        const { id, instance } = this.props.match.params;
+        api.get(`/todo/${instance}/tasks/${id}.json`).then(response => {
             const task = response.data;
             this.setState({
                 taskname: task.taskname,
@@ -20,13 +20,16 @@ class Details extends Component {
         });
     }
 
-    render () {
+    render () {   
+        const { instance } = this.props.match.params;
         return (
             <div>
-                <Header title={this.state.taskname} action='close' />
-                <div className="details">
+                <Header title={this.state.taskname} action='close'  instance={instance}/>
+                <div className='details'>
                     <p>
-                       {this.state.description}
+                    {this.state.description.split('\r\n').map(line => {
+                        return <p>{ line }</p>;
+                    })}
                     </p>
                 </div>
 

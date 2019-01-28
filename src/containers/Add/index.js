@@ -15,8 +15,9 @@ class Add extends Component {
         let jsonForm = {};
         form.forEach((value, name) => {
             jsonForm[name] = value;
-        }); 
-        api.post('/tasks.json', jsonForm).then(response => {
+        });
+        const { instance } = this.props.match.params;
+        api.post(`/todo/${instance}/tasks.json`, jsonForm).then(response => {
             console.log(response);
             this.setState({isSaved: true});
 
@@ -27,12 +28,13 @@ class Add extends Component {
     }
 
     render () {
+        const { instance } = this.props.match.params;
         if(this.state.isSaved) {
-            return <Redirect to="/" />;
-        } 
+            return <Redirect to={`/${instance}/`} />;
+        }
         return (
             <div>
-                <Header title='Nova Tarefa' action='close' />
+                <Header title='Nova Tarefa' action='close' instance={instance}/>
                 <div className='addTask'>
                     <form onSubmit={this.saveDataHandler}>
                         <p>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header';
 import Task from '../../components/Task';
+import { Redirect } from 'react-router-dom';
 import api from '../../services/api';
 import './style.css';
 
@@ -10,7 +11,11 @@ class Tasks extends Component {
     }
 
     componentDidMount() {
-        api.get('tasks.json').then(response => {
+        let { instance } = this.props.match.params;
+        if (instance === undefined) {
+            instance = 'general';
+        }
+        api.get(`/todo/${instance}/tasks.json`).then(response => {
             let tasks = [];
             for (let [key, value] of Object.entries(response.data)) {
                 tasks.push({
@@ -37,9 +42,13 @@ class Tasks extends Component {
     }
 
     render () {
+        const { instance } = this.props.match.params;
+        if (!instance) {
+            return <Redirect to='/general/' />;
+        }
         return (
             <div>
-                <Header title='Minhas Tarefas' action='add' />
+                <Header title='Minhas Tarefas' action='add' instance={instance}/>
                 <div className="tasks">
                     <ul>
                         {this.state.tasks.map(task => {

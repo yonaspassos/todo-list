@@ -7,7 +7,7 @@ class Task extends Component {
         return (
             <li key={task.id}>
                 <span>
-                    <Link to={`/details/${task.id}`} >{task.name}</Link>
+                    <Link to={`details/${task.id}`} >{task.name}</Link>
                 </span>
                 <input type="checkbox" onClick={(event) => this.props.delete(task.id)} />
             </li>

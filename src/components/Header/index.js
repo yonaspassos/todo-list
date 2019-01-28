@@ -7,11 +7,11 @@ class Header extends Component {
         let action = null;
         if (this.props.action === 'add') {
             action = <div className="add">
-                <Link to={`/add`}>+</Link>
+                <Link to={`/${this.props.instance}/add`}>+</Link>
             </div>;
         } else {
             action = <div className="close">
-                <Link to={`/`}>X</Link>
+                <Link to={`/${this.props.instance}/`}>X</Link>
             </div>;
         }
         
