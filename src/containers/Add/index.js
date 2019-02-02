@@ -16,11 +16,10 @@ class Add extends Component {
         form.forEach((value, name) => {
             jsonForm[name] = value;
         });
+        jsonForm['done'] = false;
         const { instance } = this.props.match.params;
         api.post(`/todo/${instance}/tasks.json`, jsonForm).then(response => {
-            console.log(response);
             this.setState({isSaved: true});
-
         }).catch(error => {
             console.error(error);
         })
@@ -51,10 +50,7 @@ class Add extends Component {
                     </form>
                 </div>
             </div>
-            
-        )
-
-
+        );
     }
 }
 

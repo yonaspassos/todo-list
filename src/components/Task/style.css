@@ -1,0 +1,31 @@
+.task-done, .task-todo {
+    display: block;
+    padding: 8px;
+    margin: 20px 0;
+}
+
+.task-done span a, .task-todo span a {
+    text-decoration: none;
+}
+
+.task-todo {
+    border: 1px solid black;
+}
+
+.task-done {
+    border: 1px solid #999;
+}
+
+.task-done span a {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.task-todo input {
+    float: right;
+    border-style: solid;
+}
+
+.task-done input {
+    display: none;
+}

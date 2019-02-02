@@ -3,18 +3,7 @@
     padding-left: 0;
 }
 
-.tasks ul li {
-    border: 1px solid black;
-    display: block;
-    padding: 8px;
-    margin: 20px 0;
-}
-
-.tasks ul li a {
-    text-decoration: none;
-}
-
-.tasks ul li input {
-    float: right;
-    border-style: solid;
+.tasks ul li.done-separator {
+    text-align: center;
+    font-size: 25px;
 }
